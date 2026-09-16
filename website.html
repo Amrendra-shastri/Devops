@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Interactive Website</title>
+
+    <style>
+        /* ---------- GENERAL ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            transition: 0.3s;
+        }
+
+        /* ---------- NAVBAR ---------- */
+        nav {
+            background: #1e3a8a;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav h2 {
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #93c5fd;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            min-height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            color: #2563eb;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            background: #dbeafe;
+        }
+
+        /* ---------- SECTIONS ---------- */
+        section {
+            padding: 70px 10%;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        /* ---------- SERVICE CARDS ---------- */
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            width: 250px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .card h3 {
+            margin: 15px 0;
+            color: #2563eb;
+        }
+
+        .card button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background: #1e40af;
+        }
+
+        /* ---------- CONTACT FORM ---------- */
+        form {
+            max-width: 500px;
+            margin: 30px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input,
+        textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        form button {
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        form button:hover {
+            background: #1e40af;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* ---------- DARK MODE ---------- */
+        .dark {
+            background: #111827;
+            color: white;
+        }
+
+        .dark .card {
+            background: #1f2937;
+            color: white;
+        }
+
+        .dark input,
+        .dark textarea {
+            background: #374151;
+            color: white;
+            border-color: #555;
+        }
+
+        .dark section {
+            background: #111827;
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <h2>MyWebsite</h2>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
+                <button class="btn" onclick="toggleDarkMode()">
+                    🌙 Dark Mode
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+
+    <!-- HOME -->
+    <section class="hero" id="home">
+
+        <div>
+            <h1>Welcome to My Website 🚀</h1>
+
+            <p>
+                Learn. Build. Deploy. Grow.
+            </p>
+
+            <button class="btn" onclick="showWelcome()">
+                Get Started
+            </button>
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <h2>About Us</h2>
+
+        <p>
+            We create modern websites and technology solutions
+            using HTML, CSS, JavaScript, Cloud and DevOps.
+        </p>
+
+    </section>
+
+
+    <!-- SERVICES -->
+    <section id="services">
+
+        <h2>Our Services</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <div style="font-size:40px;">🌐</div>
+
+                <h3>Web Development</h3>
+
+                <p>
+                    Build modern and responsive websites.
+                </p>
+
+                <button onclick="serviceMessage('Web Development')">
+                    Learn More
+                </button>
+            </div>
+
+
+            <div class="card">
+                <div style="font-size:40px;">☁️</div>
+
+                <h3>Cloud Services</h3>
+
+                <p>
+                    Deploy applications using cloud platforms.
+                </p>
+
+                <button onclick="serviceMessage('Cloud Services')">
+                    Learn More
+                </button>
+            </div>
+
+
+            <div class="card">
+                <div style="font-size:40px;">⚙️</div>
+
+                <h3>DevOps</h3>
+
+                <p>
+                    Automate development and deployment.
+                </p>
+
+                <button onclick="serviceMessage('DevOps')">
+                    Learn More
+                </button>
+            </div>
+
+
+            <div class="card">
+                <div style="font-size:40px;">🔧</div>
+
+                <h3>IT Support</h3>
+
+                <p>
+                    Technical support and infrastructure management.
+                </p>
+
+                <button onclick="serviceMessage('IT Support')">
+                    Learn More
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <h2>Contact Us 📩</h2>
+
+        <p>Fill out the form and we'll get back to you.</p>
+
+        <form onsubmit="submitForm(event)">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Your Email"
+                required
+            >
+
+            <textarea
+                id="message"
+                placeholder="Your Message"
+                required
+            ></textarea>
+
+            <button type="submit">
+                Send Message
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 MyWebsite | All Rights Reserved
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // Welcome button
+        function showWelcome() {
+
+            alert(
+                "🎉 Welcome to My Website! Let's start building something amazing."
+            );
+
+        }
+
+
+        // Dark mode
+        function toggleDarkMode() {
+
+            document.body.classList.toggle("dark");
+
+        }
+
+
+        // Service buttons
+        function serviceMessage(service) {
+
+            alert(
+                "You selected: " + service
+            );
+
+        }
+
+
+        // Contact form
+        function submitForm(event) {
+
+            event.preventDefault();
+
+            let name =
+                document.getElementById("name").value;
+
+            alert(
+                "Thank you, " + name +
+                "! Your message has been submitted successfully. 🎉"
+            );
+
+            document.querySelector("form").reset();
+
+        }
+
+    </script>
+
+</body>
+</html>
+:wq
+
